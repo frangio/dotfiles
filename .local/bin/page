@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+
+if [ $# -lt 1 ]
+then
+  echo "$(basename $0): no command given"
+elif [ -t 1 ]
+then
+  env PAGER=cat nvim -c "terminal $(printf ' %q' "$@")"
+else 
+  "$@"
+fi

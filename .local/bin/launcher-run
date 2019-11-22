@@ -1,0 +1,13 @@
+#!/usr/bin/env python
+
+import sys 
+import os.path
+from gi.repository import Gio
+
+def main(entry, *uris):
+    full_path = os.path.join('/home/frangio/.config/launcher', entry + '.desktop')
+    launcher = Gio.DesktopAppInfo.new_from_filename(full_path)
+    launcher.launch_uris(uris, None)
+
+if __name__ == "__main__":
+    main(*sys.argv[1:])

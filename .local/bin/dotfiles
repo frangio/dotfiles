@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+
+set -o errexit
+
+dotfiles="$HOME/.dotfiles"
+
+if ! [ -d "$dotfiles" ]; then
+  git init --bare "$dotfiles"
+fi
+
+exec git --git-dir="$dotfiles" --work-tree="$HOME" "$@"

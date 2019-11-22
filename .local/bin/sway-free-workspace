@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+
+free_workspace() {
+  swaymsg -t get_workspaces | jq '[.[] | select(.focused).name | tonumber | range(.; 11), range(1; .)] - [.[].name | tonumber] | .[0]'
+}
+
+ws="$(free_workspace)"
+
+if [ "$1" = move ]; then
+  swaymsg move container to workspace "$ws"
+fi
+
+swaymsg workspace "$ws"

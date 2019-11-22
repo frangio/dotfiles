@@ -1,0 +1,35 @@
+#!/usr/bin/env node
+
+const fs = require('fs');
+
+const files = process.argv.slice(2);
+if (files.length === 0) {
+  files.push('package-lock.json');
+}
+
+files.forEach(printFile);
+
+function printFile(file) {
+  const json = JSON.parse(fs.readFileSync(file));
+
+  for (const line of print(json.name, json)) {
+    console.log(line);
+  }
+}
+
+function* print(name, attrs) {
+  const version = attrs.version ? `@${attrs.version}` : '';
+  yield name + version;
+
+  if (attrs.dependencies) {
+    for (const dep in attrs.dependencies) {
+      yield* indent(print(dep, attrs.dependencies[dep]));
+    }
+  }
+}
+
+function* indent(iter) {
+  for (const elem of iter) {
+    yield '  ' + elem;
+  }
+}

@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+
+if [ "$1" = "-e" ]
+then
+  exec alacritty "$@"
+else
+  exit 1
+fi

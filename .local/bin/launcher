@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+launcher-list | fzf | xargs -r sway exec ~/.local/bin/launcher-run

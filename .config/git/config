@@ -1,0 +1,21 @@
+[user]
+	name = Francisco Giordano
+	email = frangio.1@gmail.com
+[commit]
+	verbose = true
+[pager]
+	log  = diff-so-fancy | ${PAGER-less}
+	show = diff-so-fancy | ${PAGER-less}
+	diff = diff-so-fancy | ${PAGER-less}
+[core]
+	excludesfile = /home/frangio/.config/git/ignore
+	whitespace = cr-at-eol
+[push]
+	default = current
+[hub]
+	protocol = ssh
+[diff "package-lock"]
+	textconv = cat-package-lock
+[diff-so-fancy]
+	markEmptyLines = false
+	changeHunkIndicators = false

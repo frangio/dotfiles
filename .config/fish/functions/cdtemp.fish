@@ -1,4 +1,3 @@
-# Defined in /tmp/fish.K57CeD/cdtemp.fish @ line 2
 function cdtemp
 	set -l tmpdir_base
 
@@ -8,11 +7,11 @@ function cdtemp
     set tmpdir_base /tmp
   end
 
-  set -l date (date +%F/%R)
+  set -l date (date +%F)
 
   set tmpdir $tmpdir_base/$date
 
   mkdir -p $tmpdir
 
-  cd (mktemp -p $tmpdir -d XXX)
+  cd (mktemp -p $tmpdir -d (date +%Hh-%Mm)-XXX)
 end

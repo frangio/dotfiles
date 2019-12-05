@@ -249,3 +249,5 @@ for_window [app_id="Launcher"] {
 for_window [class="zoom"] {
   inhibit_idle fullscreen
 }
+
+include ~/.config/sway/system

@@ -41,7 +41,7 @@ set termguicolors
 
 set signcolumn=yes
 set completeopt-=preview
-set completeopt+=noinsert
+set completeopt+=menuone
 
 set sessionoptions-=buffers
 

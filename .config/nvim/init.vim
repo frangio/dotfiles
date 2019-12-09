@@ -11,7 +11,7 @@ Plug 'tpope/vim-obsession'
 Plug 'joshdick/onedark.vim'
 Plug 'dense-analysis/ale'
 Plug 'haya14busa/vim-asterisk'
-Plug '~/code/tabcycle.vim'
+Plug 'frangio/tabcycle.vim'
 Plug 'tpope/vim-commentary'
 
 Plug 'pangloss/vim-javascript'

@@ -6,6 +6,7 @@ dotfiles="$HOME/.dotfiles"
 
 if ! [ -d "$dotfiles" ]; then
   git init --bare "$dotfiles"
+  sh "$0" config status.showUntrackedFiles no
 fi
 
 exec git --git-dir="$dotfiles" --work-tree="$HOME" "$@"

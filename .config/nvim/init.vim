@@ -204,3 +204,5 @@ function! s:Term(cmd)
 endfunction
 
 command! -nargs=? T call s:Term(<q-args>)
+
+command! -nargs=? Rg T rg <args>

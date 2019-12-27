@@ -187,7 +187,9 @@ augroup end
 " ale
 let g:ale_completion_enabled = 1
 nmap <silent> gd <Cmd>ALEGoToDefinition<CR>
+nmap <silent> <C-w>gd <Cmd>ALEGoToDefinitionInTab<CR>
 nmap <silent> zv <Cmd>ALEDetail<CR>
+nmap <silent> zh <Cmd>ALEHover<CR>
 
 " vim-asterisk
 map *  <Plug>(asterisk-z*)

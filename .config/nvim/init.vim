@@ -197,14 +197,14 @@ map #  <Plug>(asterisk-z#)
 map g* <Plug>(asterisk-gz*)
 map g# <Plug>(asterisk-gz#)
 
-function! s:Term(cmd)
-  tabedit | exec "term" a:cmd
+function! s:Term(mods, cmd)
+  exec a:mods "new | term" a:cmd
 
   if len(a:cmd) == 0
     startinsert
   endif
 endfunction
 
-command! -nargs=? T call s:Term(<q-args>)
+command! -nargs=? T call s:Term(<q-mods>, <q-args>)
 
 command! -nargs=? Rg T rg <args>

@@ -45,6 +45,9 @@ set completeopt+=noinsert,menuone
 
 set sessionoptions-=buffers
 
+set splitright
+set scrolloff=10
+
 inoremap <expr> <CR> (pumvisible() ? "\<C-Y>\<CR>" : "\<CR>")
 
 command! -bang Q qa<bang>
@@ -198,7 +201,7 @@ map g* <Plug>(asterisk-gz*)
 map g# <Plug>(asterisk-gz#)
 
 function! s:Term(mods, cmd)
-  exec a:mods "new | term" a:cmd
+  exec a:mods "vnew | term" a:cmd
 
   if len(a:cmd) == 0
     startinsert

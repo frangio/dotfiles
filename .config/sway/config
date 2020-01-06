@@ -235,7 +235,9 @@ bar {
 
 exec mako
 exec redshift
-exec swayidle timeout 150 "systemctl start physlock"
+
+set $lock "swaylock -f"
+exec swayidle -w timeout 150 $lock before-sleep $lock
 
 default_border pixel
 

@@ -189,11 +189,34 @@ augroup end
 
 " ale
 let g:ale_completion_enabled = 1
-nmap <silent> gd <Cmd>ALEGoToDefinition<CR>
-nmap <silent> <C-w>gd <Cmd>ALEGoToDefinitionInTab<CR>
-nmap <silent> <C-]> <Cmd>ALEGoToDefinition<CR>
+nmap <silent> <C-]> <Cmd>call <SID>go_to_definition(v:false)<CR>
+nmap <silent> <C-w><C-]> <Cmd>call <SID>go_to_definition(v:true)<CR>
 nmap <silent> zv <Cmd>ALEDetail<CR>
 nmap <silent> zh <Cmd>ALEHover<CR>
+
+" disable go to definition when tags are available
+augroup ALEDisableGoToDefinition
+  autocmd!
+  autocmd FileType help nnoremap <buffer> <C-]> <C-]>
+augroup end
+
+function! s:go_to_definition(in_tab)
+  call s:truncate_tagstack()
+  if a:in_tab
+    ALEGoToDefinitionInTab
+  else
+    ALEGoToDefinition
+  endif
+endfunction
+
+function! s:truncate_tagstack()
+  let l:winnr = winnr()
+  let l:tagstack = gettagstack(l:winnr)
+  if l:tagstack.curidx <= l:tagstack.length
+    unlet l:tagstack.items[l:tagstack.curidx - 1:]
+  endif
+  call settagstack(l:winnr, l:tagstack)
+endfunction
 
 " vim-asterisk
 map *  <Plug>(asterisk-z*)

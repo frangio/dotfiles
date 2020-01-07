@@ -191,6 +191,7 @@ augroup end
 let g:ale_completion_enabled = 1
 nmap <silent> gd <Cmd>ALEGoToDefinition<CR>
 nmap <silent> <C-w>gd <Cmd>ALEGoToDefinitionInTab<CR>
+nmap <silent> <C-]> <Cmd>ALEGoToDefinition<CR>
 nmap <silent> zv <Cmd>ALEDetail<CR>
 nmap <silent> zh <Cmd>ALEHover<CR>
 
@@ -210,4 +211,9 @@ endfunction
 
 command! -nargs=? T call s:Term(<q-mods>, <q-args>)
 
-command! -nargs=? Rg T rg <args>
+command! -nargs=? Rg <mods> T rg <args>
+
+augroup FugitiveMappings
+  autocmd!
+  autocmd FileType fugitive nnoremap <silent> <buffer> q <C-w>q
+augroup end

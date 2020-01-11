@@ -1,19 +1,40 @@
 #!/usr/bin/env bash
 
-set -o errexit -o pipefail
+set -o errexit -o pipefail -o nounset
 
 if [ "$#" -eq 0 ]
 then
-  echo "usage: $(basename $0) PATTERN REPLACEMENT [PATH...]" > /dev/stderr
+  echo "usage: $(basename $0) [OPTIONS] PATTERN REPLACEMENT [PATH...]" > /dev/stderr
   exit 1
 fi
 
-pattern="$1"
-replacement="$2"
-shift 2
+opts=()
+args=()
 
-paths=("$@")
+log() {
+  echo "$@" >&2
+}
 
-rg $RGOPTS -l "$pattern" "${paths[@]}" | while IFS=$'\n' read -r file; do
-  rg $RGOPTS --passthru "$pattern" --replace "$replacement" "$file" | sponge "$file"
+while [ "$#" -gt 1 -a "$1" != -- ]; do
+  case "$1" in
+    -i|-w) opts+=("$1") ;;
+    -g) opts+=("$1" "$2"); shift ;;
+    -*) log "unsupported option $1"; exit 1 ;;
+    *) args+=("$1") ;;
+  esac
+  shift
+done
+
+if [ "$1" == -- ]; then
+  shift
+fi
+
+args+=("$@")
+
+pattern="${args[0]}"
+replacement="${args[1]}"
+paths=("${args[@]:2}")
+
+rg "${opts[@]}" -l "$pattern" "${paths[@]}" | while IFS=$'\n' read -r file; do
+  rg "${opts[@]}" --passthru "$pattern" --replace "$replacement" "$file" | sponge "$file"
 done

@@ -17,7 +17,6 @@ set $menu alacritty --class Launcher -e launcher
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-output eDP-1 scale 2
 
 # Example configuration:
 #

@@ -34,5 +34,5 @@ SETUVAR fish_pager_color_completion:normal
 SETUVAR fish_pager_color_description:white\x1e\x2d\x2ddim
 SETUVAR fish_pager_color_prefix:yellow\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:normal
-SETUVAR fish_user_paths:/home/frangio/\x2elocal/share/npm/bin\x1e/home/frangio/\x2evolta/bin\x1e/usr/share/volta/bin\x1e/home/frangio/\x2elocal/bin
+SETUVAR fish_user_paths:/home/frangio/\x2elocal/share/npm/bin\x1e/home/frangio/\x2evolta/bin\x1e/home/frangio/\x2elocal/bin
 SETUVAR --export npm_config_node_gyp:node\x2dgyp\x2dcache

@@ -193,6 +193,7 @@ augroup end
 
 " ale
 let g:ale_completion_enabled = 1
+let g:ale_linters = { 'rust': ['rls'] }
 nmap <silent> <C-]> <Cmd>call <SID>go_to_definition(v:false)<CR>
 nmap <silent> <C-w><C-]> <Cmd>call <SID>go_to_definition(v:true)<CR>
 nmap <silent> zv <Cmd>ALEDetail<CR>

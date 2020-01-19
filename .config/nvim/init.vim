@@ -169,16 +169,20 @@ cnoremap <expr> <M-.> expand('%:h') . '/'
 
 nnoremap - <Cmd>e %:h<CR>
 
-" auto load Session.vim
+" auto load session
 function! s:load_session()
-  let l:session_exists = filereadable('Session.vim')
+  let l:session_dir = stdpath('data') . '/session/'
+  let l:session_file = l:session_dir . substitute(getcwd(), '/\|%\zs', '%', 'g')
+  let l:session_file_escaped = fnameescape(l:session_file)
+  let l:session_exists = filereadable(l:session_file)
 
   if @% ==# '' && !&modified && l:session_exists
-    silent source Session.vim
+    silent execute 'source' l:session_file_escaped
   endif
 
   if !l:session_exists && !v:this_session
-    Obsession
+    call mkdir(l:session_dir, 'p')
+    silent execute 'Obsession' l:session_file_escaped
   endif
 endfunction
 

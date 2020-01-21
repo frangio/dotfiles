@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+
+# usage: git npm-clone left-pad
+
+set -o errexit -o nounset
+
+pkg="$1"
+
+shift
+
+url="$(npm view "$pkg" repository.url | sed 's/^git+//;t;q1')"
+
+git clone "$url" "$@"

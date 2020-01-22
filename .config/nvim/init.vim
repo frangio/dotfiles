@@ -38,7 +38,7 @@ set cinoptions+=g0
 set nostartofline
 set hidden
 set termguicolors
-
+set cursorline
 set signcolumn=yes
 set completeopt-=preview
 set completeopt+=noinsert,menuone

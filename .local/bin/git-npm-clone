@@ -8,6 +8,10 @@ pkg="$1"
 
 shift
 
-url="$(npm view "$pkg" repository.url | sed 's/^git+//;t;q1')"
+get_clone_url() {
+  sed -e '/^\(https:\/\/github\.com\/[^/]\+\/[^/]\+\).*/s//\1.git/' -e 's/^git+//;t;q1'
+}
+
+url="$(npm view "$pkg" repository.url | get_clone_url)"
 
 git clone "$url" "$@"

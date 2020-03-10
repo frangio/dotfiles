@@ -26,7 +26,6 @@ while [ "$#" -gt 1 -a "$1" != -- ]; do
 done
 
 if [ "$1" == -- ]; then
-  args+=("--")
   shift
 fi
 
@@ -36,6 +35,6 @@ pattern="${args[0]}"
 replacement="${args[1]}"
 paths=("${args[@]:2}")
 
-rg "${opts[@]}" -l "$pattern" "${paths[@]}" | while IFS=$'\n' read -r file; do
-  rg "${opts[@]}" --passthru "$pattern" --replace "$replacement" "$file" | sponge "$file"
+rg "${opts[@]}" -l -- "$pattern" "${paths[@]}" | while IFS=$'\n' read -r file; do
+  rg "${opts[@]}" --passthru --replace "$replacement" -- "$pattern" "$file" | sponge "$file"
 done

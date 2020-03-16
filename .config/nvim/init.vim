@@ -198,6 +198,7 @@ nmap <silent> <C-]> <Cmd>call <SID>go_to_definition(v:false)<CR>
 nmap <silent> <C-w><C-]> <Cmd>call <SID>go_to_definition(v:true)<CR>
 nmap <silent> zv <Cmd>ALEDetail<CR>
 nmap <silent> zh <Cmd>ALEHover<CR>
+set omnifunc=ale#completion#OmniFunc
 
 " disable go to definition when tags are available
 augroup ALEDisableGoToDefinition

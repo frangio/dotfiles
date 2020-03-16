@@ -249,4 +249,9 @@ for_window [class="zoom"] {
   inhibit_idle fullscreen
 }
 
+for_window [title="Firefox - Sharing Indicator"] {
+  floating enable
+  move position 0 60
+}
+
 include ~/.config/sway/system

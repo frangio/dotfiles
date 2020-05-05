@@ -243,3 +243,14 @@ augroup FugitiveMappings
   autocmd!
   autocmd FileType fugitive nnoremap <silent> <buffer> q <C-w>q
 augroup end
+
+cnoremap <expr> <script> <C-T> <SID>c_tabopen()
+
+function! s:c_tabopen()
+  let l:cmdtype = getcmdtype()
+  if l:cmdtype ==# ':'
+    return "\<C-B>tabedit | \<CR>"
+  else
+    return "\<C-T>"
+  endif
+endfunction

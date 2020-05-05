@@ -1,4 +1,6 @@
 call plug#begin('~/.local/share/nvim/plugged')
+
+Plug 'frangio/ripgrep.vim'
 Plug 'tpope/vim-repeat'
 Plug 'machakann/vim-sandwich'
 Plug 'wellle/targets.vim'
@@ -239,8 +241,6 @@ function! s:Term(mods, cmd)
 endfunction
 
 command! -nargs=? T call s:Term(<q-mods>, <q-args>)
-
-command! -nargs=? Rg <mods> T rg <args>
 
 augroup FugitiveMappings
   autocmd!

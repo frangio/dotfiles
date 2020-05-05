@@ -144,9 +144,6 @@ augroup handle_swap
   autocmd SwapExists * call s:handle_swap(expand("<afile>"))
 augroup end
 
-highlight Comment cterm=italic gui=italic
-highlight Todo cterm=italic gui=italic
-
 nnoremap <silent> <M-q> <Cmd>q<CR>
 nnoremap <silent> <M-Q> <Cmd>qa<CR>
 nnoremap <silent> <M-w> <Cmd>only<CR>
